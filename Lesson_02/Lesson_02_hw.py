@@ -1,4 +1,5 @@
 import csv
+import re
 
 import pandas as pd
 import requests
@@ -99,6 +100,10 @@ def get_data(career, location, headers, settings, user_responce):
             vacancies_data['employer'] = employer
             vacancies_data['city'] = city
 
+            # уникальная строка из id вакансии на соответствующем сайте и наименования сайта
+            uniq_str = str(re.split('\D{3,}', link)[1]) + url_name
+            vacancies_data['uniq_key'] = uniq_str
+
             vacancies_list.append(vacancies_data)
 
         try:
@@ -154,10 +159,10 @@ all_vacancies_list = get_data(current_career, current_location, current_headers,
                      get_data(current_career, current_location, current_headers, settings_sj, users_responce)
 
 df_result = pd.DataFrame(all_vacancies_list)
-print(df_result)
+# print(df_result)
 
 with open("vacancies.csv", mode="w", encoding='utf-8') as wf:
-    names = ['title', 'min_val', 'max_val', 'currency', 'link', 'site', 'employer', 'city']
+    names = ['title', 'min_val', 'max_val', 'currency', 'link', 'site', 'employer', 'city', 'uniq_key']
     file_writer = csv.DictWriter(wf, delimiter=",",
                                  lineterminator="\r", fieldnames=names)
     file_writer.writeheader()
