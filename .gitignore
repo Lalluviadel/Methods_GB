@@ -1,0 +1,9 @@
+# created by virtualenv automatically
+../my_venv/Lib
+/Lesson_matherials/
+/my_venv/
+.idea
+/School_scrapper/my_data.py
+/School_scrapper/hw.xlsx
+/Lesson_02/vacancies.csv
+/Lesson_03/vacancies.csv
