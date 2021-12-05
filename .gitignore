@@ -1,0 +1,8 @@
+# created by virtualenv automatically
+../my_venv/Lib
+/Lesson_matherials/
+/my_venv/
+.idea
+/School_scrapper/my_data.py
+/School_scrapper/Урочки.xlsx
+/Lesson_05/chromedriver.exe
